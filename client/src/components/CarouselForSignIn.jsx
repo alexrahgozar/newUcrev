@@ -1,27 +1,27 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Carousel, Item, Caption, Image} from 'react-bootstrap';
+import {Carousel, Item, Caption, Image} from 'react-bootstrap'
 
 class CarouselForSignIn extends Component {
 
   render() {
     return (
-      <Carousel style={{marginTop: "50px"}}>
+      <Carousel>
         <Carousel.Item>
-          <Image style={{width:"650px", height:"400px"}} src="https://drive.google.com/uc?export=view&id=1ZYABrV5beOq4BS9DtLatWVxORN1itKFd" />
-          <Carousel.Caption style={{}}>
+          <Image style={styleImage1} src="https://drive.google.com/uc?export=view&id=1ZYABrV5beOq4BS9DtLatWVxORN1itKFd" />
+          <Carousel.Caption>
 
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <Image style={{ width:"650px", height:"400px"}}src="https://drive.google.com/uc?export=view&id=11tjMzgZh00AdcTyCZJ2N9PzNB-B1lcFP"/>
-          <Carousel.Caption style={{}}>
+          <Image style={styleImage1}src="https://drive.google.com/uc?export=view&id=11tjMzgZh00AdcTyCZJ2N9PzNB-B1lcFP"/>
+          <Carousel.Caption>
 
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <Image style={{width:"650px", height:"400px"}} src="https://drive.google.com/uc?export=view&id=1oUjGiFp3iUzKtVHK6ieneK6o42Jjug0E" />
-          <Carousel.Caption style={{}}>
+          <Image style={styleImage1} src="https://drive.google.com/uc?export=view&id=1oUjGiFp3iUzKtVHK6ieneK6o42Jjug0E" />
+          <Carousel.Caption>
 
           </Carousel.Caption>
         </Carousel.Item>
@@ -30,4 +30,6 @@ class CarouselForSignIn extends Component {
   }
 }
 
-export default CarouselForSignIn;
+let styleImage1 = {width:"650px", height:"300px"}
+
+export default CarouselForSignIn

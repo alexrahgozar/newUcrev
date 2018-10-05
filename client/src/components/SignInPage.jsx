@@ -17,8 +17,13 @@ class SignInPage extends Component {
     return (
       <div>
         <Row>
-          <Col md={4} sm={4}> <SignFrame/> </Col>
-          <Col md={7} lg={6} style= {{backgroundColor: "white"}}> <CarouselForSignIn /> </Col>
+          <Col md={4} sm={5} > <SignFrame/> </Col>
+          <Col sm={7} md={6} style= {{marginTop:'3%', backgroundColor: "white"}}>
+            <CarouselForSignIn />
+          </Col>
+        </Row>
+        <Row>
+
         </Row>
       </div>
     )

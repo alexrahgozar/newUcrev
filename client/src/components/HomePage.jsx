@@ -10,16 +10,16 @@ class HomePage extends Component {
     return(
       <div>
         <Row>
-          <Col lg={10} lg={16}>
+          <Col lg={7} lg={18}>
             <CarouselHomePage/>
             </Col>
         </Row>
 
         <Row>
           <Col>
-            <form className="form-inline mt-2 mt-md-0" style={{marginLeft: "15%", marginTop: "20px"}}>
-              <input  className="form-control" style={{paddingLeft:"30px", width: "700px", height:"60px", border: "2px solid black", fontSize:"20px"}} type="text" placeholder="Search" aria-label="Search"/>
-                <Button style={{marginRight:"5%", width: "200px", height:"60px", fontSize:"20px"}}  bsStyle='primary'  type="submit">Search</Button>
+            <form className="form-inline mt-2 mt-md-0" style={styleForm1}>
+              <input  className="form-control" style={styleInput1} type="text" placeholder="Search" aria-label="Search"/>
+                <Button style={styleButton1}  bsStyle='primary'  type="submit">Search</Button>
             </form>
           </Col>
         </Row>
@@ -28,4 +28,7 @@ class HomePage extends Component {
   }
 }
 
+let styleForm1 = {marginLeft: "15%", marginTop: "20px"};
+let styleInput1 = {paddingLeft:"30px", width: "700px", height:"60px", border: "2px solid black", fontSize:"20px"};
+let styleButton1 = {marginRight:"5%", width: "200px", height:"60px", fontSize:"20px"};
 export default HomePage;

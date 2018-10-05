@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Button, pre, code, img, a, form, input} from 'react-bootstrap'
 
 
-class SignFrame extends React.Component {
+class SignFrame extends Component {
   render() {
     return (
       <div>

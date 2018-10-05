@@ -1,50 +1,9 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom';
-// import Rewview from './components/Review.jsx';
 import $ from 'jquery';
 import {Button, form, Form, FormGroup, ControlLabel, FormControl,
-  HelpBlock, InputGroup, Checkbox, Glyphicon } from 'react-bootstrap'
-// import Navbars from './components/Navbars.jsx'
-// import SignBoot from './components/SignBoot.jsx'
-// import Carouselz from './components/Carouselz.jsx'
-// import SignUp from './components/SignUp.jsx'
-// import RevForm from './components/RevForm.jsx'
-
+HelpBlock, InputGroup, Checkbox, Glyphicon } from 'react-bootstrap'
 // import { Container, Row, Col } from 'react-bootstrap'
-
-class Success extends Component {
-  render() {
-    return (
-      <div>
-        <form>
-          <FormGroup controlId="formValidationSuccess2" validationState="success">
-            <ControlLabel>Input with success and feedback icon</ControlLabel>
-            <FormControl type="text" />
-            <FormControl.Feedback />
-            </FormGroup>
-        </form>
-      </div>
-    )
-  }
-}
-
-class Error extends Component {
-  render() {
-    return (
-      <div>
-        <form>
-          <FormGroup controlId="formValidationError2" validationState="error">
-            <ControlLabel>Input with error and feedback icon</ControlLabel>
-            <FormControl type="text" />
-            <FormControl.Feedback />
-          </FormGroup>
-        </form>
-      </div>
-    )
-  }
-}
-
-
 
 class NewUser extends Component {
   constructor(props) {
@@ -56,7 +15,6 @@ class NewUser extends Component {
       validationState2: 'warning',
       validationState3: 'warning',
       validationState4: 'warning',
-
       info1: '',
       info2: '',
       info3: '',
@@ -71,7 +29,10 @@ class NewUser extends Component {
       disabled4: true,
       emailValidation: 'warning',
       input: '',
-      data: null
+      data: null,
+      createdAcct: '',
+      errorAcct: '',
+      login: false
     }
     this.validationButton = this.validationButton.bind(this);
     this.handleInputName = this.handleInputName.bind(this);
@@ -118,17 +79,17 @@ class NewUser extends Component {
         })
       }
   }
-      handleInputEmail(event) {
+  handleInputEmail(event) {
+    this.setState({
+      value2: event.target.value
+    });
+    let valid = this.state.value2.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+      if(valid !== null) {
         this.setState({
-          value2: event.target.value
-        });
-        let valid = this.state.value2.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-        if(valid !== null) {
-          this.setState({
-            validationState2: 'success',
-            info: '',
-            disabled2: false
-        })
+          validationState2: 'success',
+          info: '',
+          disabled2: false
+      })
       } else {
         this.setState({
           validationState2: 'error',
@@ -146,71 +107,74 @@ class NewUser extends Component {
           disabledSubmit: true
         })
       }
-      }
-      handleInputReEmail(event) {
+  }
+
+  handleInputReEmail(event) {
+    this.setState({
+      value3: event.target.value
+    });
+
+    if(this.state.value2 === event.target.value) {
+      this.setState({
+        validationState3: 'success',
+        info: '',
+        disabled3: false
+        })
+    } else {
+      this.setState({
+        validationState3: 'error',
+        info: 'User Name must be longer than 7 letters',
+        disabled3: true
+        })
+    }
+
+    if(this.state.disabled1 === false && this.state.disabled2 === false &&
+      this.state.disabled3 === false && this.state.disabled4 === false) {
         this.setState({
-          value3: event.target.value
-        });
+          disabledSubmit: false
+        })
+    } else {
+      this.setState({
+        disabledSubmit: true
+      })
+    }
+  }
 
-        if(this.state.value2 === event.target.value) {
-          this.setState({
-            validationState3: 'success',
-            info: '',
-            disabled3: false
-          })
-        } else {
-          this.setState({
-            validationState3: 'error',
-            info: 'User Name must be longer than 7 letters',
-            disabled3: true
-          })
-        }
+  handleInputPassword(event) {
+    let symbols = '!@#$%^&*'
+    let symbolValid = event.target.value.match(/[#@$-/:-?{-~!"^_`\[\]]/)
+    let numberValid = event.target.value.match(/[0-9]/)
+    let charValid = event.target.value.match(/[A-Za-z]/)
+    let passwordLength = event.target.value.length
+      this.setState({
+        value4: event.target.value
+      });
 
-        if(this.state.disabled1 === false && this.state.disabled2 === false &&
+      if(symbolValid !== null && numberValid !== null && charValid !== null && passwordLength > 6) {
+        this.setState({
+          validationState4: 'success',
+          info: '',
+          disabled4: false
+        })
+      } else {
+        this.setState({
+          validationState4: 'error',
+          info: 'User Name must be longer than 7 letters',
+          disabled4: true
+        })
+      }
+
+      if(this.state.disabled1 === false && this.state.disabled2 === false &&
         this.state.disabled3 === false && this.state.disabled4 === false) {
           this.setState({
             disabledSubmit: false
           })
-        } else {
-          this.setState({
-            disabledSubmit: true
-          })
-        }
-      }
-      handleInputPassword(event) {
-        let symbols = '!@#$%^&*'
-         let symbolValid = event.target.value.match(/[#@$-/:-?{-~!"^_`\[\]]/)
-         let numberValid = event.target.value.match(/[0-9]/)
-         let charValid = event.target.value.match(/[A-Za-z]/)
-         let passwordLength = event.target.value.length
+      } else {
         this.setState({
-          value4: event.target.value
-        });
-        if(symbolValid !== null && numberValid !== null && charValid !== null && passwordLength > 6) {
-          this.setState({
-            validationState4: 'success',
-            info: '',
-            disabled4: false
-          })
-        } else {
-          this.setState({
-            validationState4: 'error',
-            info: 'User Name must be longer than 7 letters',
-            disabled4: true
-          })
-        }
-
-        if(this.state.disabled1 === false && this.state.disabled2 === false &&
-        this.state.disabled3 === false && this.state.disabled4 === false) {
-          this.setState({
-            disabledSubmit: false
-          })
-        } else {
-          this.setState({
-            disabledSubmit: true
-          })
-        }
+          disabledSubmit: true
+        })
       }
+  }
       /// submit
 
 
@@ -226,6 +190,7 @@ class NewUser extends Component {
   validationState4() {
 
   }
+
   validationButton() {
     if(this.state.validationState !== "error"|| this.state.validationState !== null) {
       // this.setState({
@@ -233,33 +198,34 @@ class NewUser extends Component {
       // })
     }
   }
+
   disabledSubmit() {
     if(this.state.disabled1 === false && this.state.disabled2 === false &&
-    this.state.disabled3 === false && this.state.disabled4 === false) {
-      this.setState({
-        disabledSubmit: false
-      })
+      this.state.disabled3 === false && this.state.disabled4 === false) {
+        this.setState({
+          disabledSubmit: false
+        })
     } else {
-      this.setState({
-        disabledSubmit: true
-      })
+        this.setState({
+          disabledSubmit: true
+        })
     }
   }
 
-  //////
   handleSubmit(e) {
+    this.setState({
+      createdAcct: '',
+      errorAcct: ''
+    })
 
-
-    var myData =
+    var userInformation =
     {
       username: this.state.value1,
       email: this.state.value2,
       emailRe: this.state.value3,
       password: this.state.value4
-
   }
-
-   console.log('here', myData)
+   console.log('UserInformation: ', userInformation)
    fetch('/newacct', {
      method: 'POST',
      headers: {
@@ -273,27 +239,33 @@ class NewUser extends Component {
        password: this.state.value4
      })
    }).then(res => res.json())
-.then(response => console.log('Success:', JSON.stringify(response)))
-.catch(error => console.error('Error:', error));
-
-      e.preventDefault()
+   .then(response =>  this.setState({
+     createdAcct: 'Hi ' + JSON.stringify(response.username).slice(1,-1) + ', Welcome To UcRev.',
+     errorAcct: '',
+     login: true
+   }))
+   .catch(error => this.setState({
+     errorAcct: 'The email address is already taken. Please choose another one.',
+   }));
+   console.log('CreatedACCT: ',this.state.createdAcct)
+   console.log('ErrorACCT: ',this.state.errorAcct)
+   console.log("STATE: ", this.state.createdAcct.length)
+    e.preventDefault()
     // this.props.saveInfo(data)
     // e.target.reset();
   }
+
   render() {
-    console.log(this.state.info)
     return(
       <div>
         <form onSubmit={this.handleSubmit} autoComplete="off" style={{width:"20%", marginLeft: "10%",marginTop: "2%"}}>
         <div className="text-center mb-4">
           <img className="mb-4" src= "https://drive.google.com/uc?export=view&id=1JGmtRC0EGRGfyzvUkDEf3OwE_4yTdjH5" alt="" width="150" height="150"/>
-
           <p style={{fontFamily:"Times New Roman", fontSize:'22px'}}>Sign up to save your favorite restaurants and reviews.</p>
         </div>
           <FormGroup controlId="formValidationSuccess1" validationState={this.state.validationState1}>
             <ControlLabel>{this.state.info1}</ControlLabel>
             <FormControl
-
               autoComplete="off"
               type="text"
               value={this.state.value1}
@@ -305,7 +277,6 @@ class NewUser extends Component {
           <FormGroup controlId="formValidationSuccess2" validationState={this.state.validationState2}>
             <ControlLabel>{this.state.info2}</ControlLabel>
             <FormControl
-
               autoComplete="off"
               type="email"
               value={this.state.value2}
@@ -317,7 +288,6 @@ class NewUser extends Component {
           <FormGroup controlId="formValidationSuccess3" validationState={this.state.validationState3}>
             <ControlLabel>{this.state.info3}</ControlLabel>
             <FormControl
-
               autoComplete="off"
               type="email"
               value={this.state.value3}
@@ -329,7 +299,6 @@ class NewUser extends Component {
           <FormGroup controlId="formValidationSuccess4" validationState={this.state.validationState4}>
             <ControlLabel>{this.state.info4}</ControlLabel>
             <FormControl
-
               autoComplete="off"
               type="password"
               value={this.state.value4}
@@ -338,17 +307,12 @@ class NewUser extends Component {
               <FormControl.Feedback />
           </FormGroup>
           <Button  disabled={this.state.disabledSubmit}  type="submit">Submit</Button>
-
         </form>
-
-        <h1>{this.state.value2}, {this.state.value3}, {this.state.disabledSubmit}</h1>
-        <h1>{}</h1>
+        <h1>{this.state.createdAcct}</h1>
+        <h1>{this.state.errorAcct}</h1>
       </div>
     )
   }
 }
-
-
-// console.log(value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i))
 
 export default NewUser;

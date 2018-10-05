@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Carousel, Item, Caption, Image} from 'react-bootstrap'
+import {Carousel, Item, Caption, Image} from 'react-bootstrap';
 
-class CarouselHomePage extends React.Component {
+class CarouselHomePage extends Component {
 
   render() {
     return (
@@ -35,10 +35,8 @@ class CarouselHomePage extends React.Component {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-
     )
   }
 }
 
-
-export default CarouselHomePage
+export default CarouselHomePage;

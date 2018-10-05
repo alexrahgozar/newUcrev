@@ -6,10 +6,10 @@ class HappyHourPage extends Component {
   render() {
     return (
       <div>
-      <h1>Happy Hour Deals</h1>
+        <h1>Happy Hour Deals</h1>
       </div>
     )
   }
 }
 
-export default HappyHourPage
+export default HappyHourPage;

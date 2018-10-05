@@ -1,6 +1,5 @@
-var path = require("path")
+var path = require("path");
 // var HtmlWebpackPlugin = require('html-webpack-plugin')
-
 var SRC_DIRC  = path.join(__dirname, '/client/src');
 var DIST_DIRC = path.join(__dirname, '/client/dist');
 
@@ -25,4 +24,4 @@ module.exports = {
     ]
   }
 
-}
+};

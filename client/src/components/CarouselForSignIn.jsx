@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Carousel, Item, Caption, Image} from 'react-bootstrap'
+import {Carousel, Item, Caption, Image} from 'react-bootstrap';
 
-class CarouselForSignIn extends React.Component {
+class CarouselForSignIn extends Component {
 
   render() {
     return (
@@ -26,10 +26,8 @@ class CarouselForSignIn extends React.Component {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-
     )
   }
 }
 
-
-export default CarouselForSignIn
+export default CarouselForSignIn;

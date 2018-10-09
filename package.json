@@ -2,10 +2,13 @@
   "name": "newuc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.js",
+  "engines": {
+    "node": "10.7.0",
+    "npm": "6.1.0"
+  }
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "nodemon": "nodemon server/index.js",
+    "start": "nodemon server/index.js",
     "webpack": "webpack -d --watch"
   },
   "author": "alex rahgozar",

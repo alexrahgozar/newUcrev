@@ -1,13 +1,13 @@
-import React, {Component} from "react";
-import ReactDOM from 'react-dom';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
 class DealsPage extends Component {
   render() {
-    return(
+    return (
       <div>
         <h1>Deals Page: </h1>
       </div>
-    )
+    );
   }
 }
 

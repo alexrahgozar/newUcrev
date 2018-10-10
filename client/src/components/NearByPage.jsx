@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom'
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
 class NearByPage extends Component {
   render() {
@@ -7,7 +7,7 @@ class NearByPage extends Component {
       <div>
         <h1>Near By: </h1>
       </div>
-    )
+    );
   }
 }
 

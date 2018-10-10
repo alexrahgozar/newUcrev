@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
 class ContactPage extends Component {
   render() {
@@ -6,7 +6,7 @@ class ContactPage extends Component {
       <div>
         <h1>Contact Us: </h1>
       </div>
-    )
+    );
   }
 }
 
